@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open a File in PyScript</title>
+
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <py-env>
+        - pandas
+    </py-env>
+</head>
+<body>
+
+<py-script>
+import pandas as pd
+from pyodide.http import open_url
+
+pd.set_option('display.max_rows', None)
+df = pd.read_csv(open_url("Sample100.csv"))
+
+csv = Element("csv")
+pyscript.write("table", df)
+
+</py-script>
+</body>
+<div class="table-responsive-lg" style="padding: 30px">
+<table id="table"></table>
+</div>
+</html>
